@@ -1,0 +1,11 @@
+{
+  "name": "chillisoft",
+  "version": "1.0.0",
+  "description": "text decryption",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Tatenda",
+  "license": "ISC"
+}

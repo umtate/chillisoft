@@ -47,16 +47,18 @@ describe("Create Menu Permissions", () => {
     ],
   };
 
+  let createMenu;
+  beforeEach(() => {
+	createMenu = new CreateUserMenus(users, menuItems);
+  })
+
   it("should create menu perissions class with users and menu items", () => {
-    const createMenu = new CreateUserMenus(users, menuItems);
 
     expect(createMenu.users).toEqual(users)
     expect(createMenu.menu).toEqual(menuItems)
   });
 
   it("should create menu perissions given users and menu items", () => {
-    const createMenu = new CreateUserMenus(users, menuItems);
-
     expect(createMenu.createMenu()).toEqual(output);
   });
 });

@@ -7,11 +7,11 @@ class ConvertMenuItemsFile {
 
   processFileToArr = () => {
     const data = readFile(this.fileName);
-    return splitStringAtNewLine(data).map((col) => {
-      const columns = col.split(" ");
+    return splitStringAtNewLine(data).map((row) => {
+      const rows = row.split(" ");
       return {
-        id: parseInt(columns[0].replace(",", "")),
-        menuItem: columns[1],
+        id: parseInt(rows[0].replace(",", "")),
+        menuItem: rows[1],
       };
     });
   };

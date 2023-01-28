@@ -7,12 +7,12 @@ class ConvertUsersFile {
 
   processFile = () => {
     const data = readFile(this.fileName)
-    return splitStringAtNewLine(data).map((col) => {
-      const columns = col.split(" ");
+    return splitStringAtNewLine(data).map((row) => {
+      const rows = row.split(" ");
       return {
-        userName: columns[0],
-        sequenceOne: columns[1],
-        sequenceTwo: columns[2],
+        userName: rows[0],
+        sequenceOne: rows[1],
+        sequenceTwo: rows[2],
       };
     });
   };

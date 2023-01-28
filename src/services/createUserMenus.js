@@ -18,7 +18,7 @@ class CreateUserMenus {
           const sequenceTwo = user.sequenceTwo
             .split("")
             .map((x, ind) => {
-              if (x === "Y") return ind + 6;
+              if (x === "Y") return ind + user.sequenceOne.length + 1
             })
             .filter((x) => !!x);
 
@@ -32,7 +32,7 @@ class CreateUserMenus {
         }),
       };
     } catch (err) {
-	console.error(`An error occured while creating menus ${err}`)
+      console.error(`An error occured while creating menus ${err}`);
     }
   };
 }

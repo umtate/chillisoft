@@ -8,27 +8,28 @@ class CreateUserMenus {
     try {
       return {
         users: this.users.map((user) => {
-          const userName = user.userName;
-          const sequenceOne = user.sequenceOne
+          const {userName, sequenceOne, sequenceTwo} = user
+          
+          const firstSequencePermissions = sequenceOne
             .split("")
             .map((x, ind) => {
               if (x === "Y") return ind + 1;
             })
             .filter((x) => !!x);
-          const sequenceTwo = user.sequenceTwo
+          const secondSequencePermissions = sequenceTwo
             .split("")
             .map((x, ind) => {
-              if (x === "Y") return ind + user.sequenceOne.length + 1
+              if (x === "Y") return ind + sequenceOne.length + 1
             })
             .filter((x) => !!x);
 
-          const sequenceArr = [...sequenceOne, ...sequenceTwo];
+          const sequencePermissionsArr = [...firstSequencePermissions, ...secondSequencePermissions];
 
           const menuItems = this.menu
-            .filter((x) => sequenceArr.some((y) => y === x.id))
+            .filter((x) => sequencePermissionsArr.some((y) => y === x.id))
             .map((item) => item.menuItem);
 
-          return { userName: userName, menuItems: menuItems };
+          return { userName, menuItems };
         }),
       };
     } catch (err) {

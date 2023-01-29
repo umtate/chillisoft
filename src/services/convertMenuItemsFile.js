@@ -9,9 +9,13 @@ class ConvertMenuItemsFile {
     const data = readFile(this.fileName);
     return splitStringAtNewLine(data).map((row) => {
       const rows = row.split(" ");
+      let menuItem = "";
+      rows.forEach((x, ind) => {
+        if (ind !== 0) menuItem = `${menuItem} ${x}`;
+      });
       return {
         id: parseInt(rows[0].replace(",", "")),
-        menuItem: rows[1],
+        menuItem: menuItem.trim(),
       };
     });
   };
